@@ -1,0 +1,19 @@
+const rateLimit = require("express-rate-limit");
+
+const standardLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+
+  max:5, // Limit each IP to 100 requests per window
+
+  standardHeaders: true,
+
+  legacyHeaders: false,
+
+  message: {
+    message: "Too many requests. Please try again later.",
+  },
+});
+
+module.exports = {
+    standardLimiter
+}
